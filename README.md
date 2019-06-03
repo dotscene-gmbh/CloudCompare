@@ -1,11 +1,20 @@
 CloudCompare
 ============
 
+
 Homepage: http://www.cloudcompare.org/
 
 [![GitHub release](https://img.shields.io/github/release/cloudcompare/trunk.svg)](https://github.com/cloudcompare/trunk/releases)
 [![Build Status](https://travis-ci.org/CloudCompare/CloudCompare.svg?branch=master)](https://travis-ci.org/CloudCompare/CloudCompare)
 [![Releases](https://coderelease.io/badge/CloudCompare/CloudCompare)](https://coderelease.io/github/repository/CloudCompare/CloudCompare)
+
+
+Release Notes Dotscene
+------------
+ * current version based von `v2.10.2` (24.2.2019)
+ * Modifications
+  * compiles against libe57format dotscene
+
 
 Introduction
 ------------

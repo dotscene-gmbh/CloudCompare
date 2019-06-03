@@ -24,7 +24,7 @@
 #include "E57Header.h"
 
 //libE57Format
-#include <E57Format.h>
+#include <E57Format/E57Foundation.h>
 
 //CCLib
 #include <ScalarField.h>
@@ -642,6 +642,8 @@ CC_FILE_ERROR E57Filter::saveToFile(ccHObject* entity, const QString& filename, 
 
 	CC_FILE_ERROR result = CC_FERR_NO_ERROR;
 
+	e57::E57Utilities e57util;
+
 	try
 	{
 		e57::ImageFile imf(qPrintable(filename), "w"); //DGM: warning, toStdString doesn't preserve "local" characters
@@ -667,7 +669,7 @@ CC_FILE_ERROR E57Filter::saveToFile(ccHObject* entity, const QString& filename, 
 		int astmMajor;
 		int astmMinor;
 		e57::ustring libraryId;
-		e57::Utilities::getVersions(astmMajor, astmMinor, libraryId);
+		e57util.getVersions(astmMajor, astmMinor, libraryId);
 
 		root.set("versionMajor", e57::IntegerNode(imf,astmMajor));
 		root.set("versionMinor", e57::IntegerNode(imf,astmMinor));
@@ -788,7 +790,7 @@ CC_FILE_ERROR E57Filter::saveToFile(ccHObject* entity, const QString& filename, 
 	catch(const e57::E57Exception& e)
 	{
 		ccLog::Warning( QStringLiteral("[E57] Error: %1 (%2 line %3)")
-						.arg( e57::Utilities::errorCodeToString( e.errorCode() ).c_str() )
+						.arg( e57util.errorCodeToString( e.errorCode() ).c_str() )
 						.arg( e.sourceFileName() )
 						.arg( e.sourceLineNumber() )
 						);
@@ -2339,7 +2341,8 @@ CC_FILE_ERROR E57Filter::loadFile(const QString& filename, ccHObject& container,
 	}
 	catch(const e57::E57Exception& e)
 	{
-		ccLog::Warning(QString("[E57] Error: %1").arg(e57::Utilities::errorCodeToString(e.errorCode()).c_str()));
+		e57::E57Utilities e57util;
+		ccLog::Warning(QString("[E57] Error: %1").arg(e57util.errorCodeToString(e.errorCode()).c_str()));
 		
 		if ( !e.context().empty() )
 		{
