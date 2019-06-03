@@ -290,7 +290,7 @@ std::string cc2smReader::GetSimplifiedSFName(const std::string& ccSfName)
 {
 	QString simplified = QString::fromStdString(ccSfName).simplified();
 	simplified.replace(' ', '_');
-	return simplified.toStdString();
+	return simplified.toLower().toStdString(); // use lowercase only for compatibility void predefined pcl types, e.g. 'intensity' instead of 'Intensity'
 }
 
 PCLCloud::Ptr cc2smReader::getFloatScalarField(const std::string& field_name) const

@@ -14,7 +14,7 @@ Release Notes Dotscene
  * current version based von `v2.10.2` (24.2.2019)
  * Modifications
   * compiles against libe57format dotscene
-
+  * save all fields in .pcd files lowercase to avoid compatibility problems with the default pcl types
 
 Introduction
 ------------
