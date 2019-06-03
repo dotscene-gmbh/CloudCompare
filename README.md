@@ -16,6 +16,17 @@ Release Notes Dotscene
   * compiles against libe57format dotscene
   * save all fields in .pcd files lowercase to avoid compatibility problems with the default pcl types
 
+
+Install Notes Dotscene
+------------
+Installations via cmake:
+ * Prerequisites: `sudo apt install libjsoncpp-dev ffmpeg libqt5svg5-dev libtbb-dev libpdal-dev`
+ * Additional cmake variables: `-DCMAKE_BUILD_TYPE:STRING="Release" -DOPTION_PDAL_LAS:BOOL="1" -DOPTION_USE_DXF_LIB:BOOL="1" -DINSTALL_QPCL_PLUGIN:BOOL="1" -DINSTALL_QANIMATION_PLUGIN:BOOL="1" -DINSTALL_QRANSAC_SD_PLUGIN:BOOL="1" -DINSTALL_QADDITIONAL_IO_PLUGIN:BOOL="1" -DINSTALL_QEDL_PLUGIN:BOOL="1" -DCOMPILE_CC_CORE_LIB_WITH_TBB:BOOL="1" -DJSON_ROOT_DIR:PATH=/usr/include/jsoncpp -DWITH_FFMPEG_SUPPORT:BOOL="1" -DFFMPEG_INCLUDE_DIR:PATH=/usr/include/x86_64-linux-gnu/ -DFFMPEG_LIBRARY_DIR:PATH=/usr/lib/x86_64-linux-gnu/ -DOPTION_USE_LIBE57FORMAT:BOOL=1 -DLIBE57FORMAT_INSTALL_DIR:PATH=/usr/local/`
+ * CloudCompare requires `make install` to get a running version with all plugins requested. If `sudo make install` cannot be executed, adjust `CMAKE_INSTALL_LIBDIR` and `CMAKE_INSTALL_PREFIX`.
+
+
+
+
 Introduction
 ------------
 
